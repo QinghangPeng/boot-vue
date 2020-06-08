@@ -29,14 +29,14 @@
     <br>
     <h2>进行中</h2>
     <ul>
-      <li v-for="(item,key) in list" :key="item" v-if="item.checked">
+      <li v-for="(item,key) in list" :key="item" v-show="!item.checked">
         <input type="checkbox" v-model="item.checked">{{item.title}}  ---------  <button @click="removeData(key)">删除</button>
       </li>
     </ul>
     <br>
     <h2>已完成</h2>
     <ul>
-      <li v-for="(item,key) in list" :key="item" v-if="item.checked">
+      <li v-for="(item,key) in list" :key="item" v-show="item.checked">
         <input type="checkbox" v-model="item.checked">{{item.title}}  ---------  <button @click="removeData(key)">删除</button>
       </li>
     </ul>
@@ -89,7 +89,8 @@
       },
       // 删除list中的值
       removeData (data) {
-        this.list.splice(data)
+        debugger
+        this.list.splice(data, 1)
       }
     }
   }
